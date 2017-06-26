@@ -1,5 +1,9 @@
 <% @posts.each do |post| %>
   <p><%= post.message %></p>
+    <%= link_to "http://www.bbc.co.uk/news" do %>
+      Comment
+    <% end %>
+    <br>
 <% end %>
 
 <%= link_to new_post_path do %>
