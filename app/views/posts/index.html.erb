@@ -26,3 +26,8 @@
 <%= link_to new_post_path do %>
 New post
 <% end %>
+
+<% if signed_in? %>
+  <p><span><%= current_user.email %></span></p>
+  <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
+<% end %>
