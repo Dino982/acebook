@@ -4,6 +4,7 @@
 <p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
 
 <h3>Comments</h3>
+
 <% post.comments.each do |comment| %>
 <p>
   <strong>Commenter:</strong>
