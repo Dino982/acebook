@@ -85,8 +85,8 @@ production:
   password: <%= ENV['PGAPP_DATABASE_PASSWORD'] %>
 
 
-  staging:
-  adapter: sqlite3
-  database: db/staging.sqlite3
-  pool: 5
-  timeout: 5000 adapter: sqlite3
+  # staging:
+  # adapter: sqlite3
+  # database: db/staging.sqlite3
+  # pool: 5
+  # timeout: 5000 adapter: sqlite3
