@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
 <p><%= post.message %></p>
+<p><%= post.created_at.strftime("%B %-d at %l:%M%p") %></p>
 
 <h3>Comments</h3>
 <% post.comments.each do |comment| %>
