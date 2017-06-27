@@ -1,5 +1,6 @@
 <% @posts.each do |post| %>
 <p><%= post.message %></p>
+<p><%= post.created_at.strftime("%B %-d at %l:%M%p") %></p>
 
 <h3>Comments</h3>
 <% post.comments.each do |comment| %>
@@ -25,4 +26,9 @@
 
 <%= link_to new_post_path do %>
 New post
+<% end %>
+
+<% if signed_in? %>
+  <p><span><%= current_user.email %></span></p>
+  <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
 <% end %>
