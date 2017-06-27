@@ -14,9 +14,7 @@ RSpec.feature "Timeline", type: :feature do
     fill_in "Message", with: "This is my second post"
     click_button "Submit"
     first_idx = page.body.index("This is my first post")
-    p first_idx
     second_idx = page.body.index("This is my second post")
-    p second_idx
     expect(first_idx).to be > second_idx
   end
 end
