@@ -3,7 +3,7 @@
 <p><%= simple_format post.message %></p>
 <p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
 
-<h3>Very good Comments</h3>
+<h3>Very good Comments!</h3>
 
 <% post.comments.each do |comment| %>
 <p>
