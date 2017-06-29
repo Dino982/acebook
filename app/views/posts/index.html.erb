@@ -67,7 +67,6 @@ New post
 
 <% if signed_in? %>
   <p>Hello, <%= current_user.firstname %>!!!</p>
-  <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
 <% end %>
 </div>
 
