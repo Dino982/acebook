@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html>
 <%= stylesheet_link_tag "stylesheet.css" %>
@@ -19,7 +20,7 @@
 <% @posts.each do |post| %>
 
 <div class="post" id="<%= post.id %>">
-<p><%= User.find(post.user_id).firstname %> says: <%= post.message %></p>
+<p><%= User.find(post.user_id).firstname %> says: <%= simple_format post.message %></p>
 <p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
 
 <h3>Comments</h3>
@@ -65,7 +66,7 @@ New post
 <% end %>
 
 <% if signed_in? %>
-  <p><span><%= current_user.email %></span></p>
+  <p>Hello, <%= current_user.firstname %>!!!</p>
   <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
 <% end %>
 </div>

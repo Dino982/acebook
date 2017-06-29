@@ -1,15 +1,15 @@
 require 'rails_helper'
 
 RSpec.feature "Timeline", type: :feature do
-  scenario "Can submit posts and view them" do
+  scenario "Can see the date and time a post was submitted" do
     visit "/posts"
     click_link "Sign up"
     fill_in "Email", with:"test@example.org"
     fill_in "Password", with:"12345"
     click_button "Sign up"
     click_link "New post"
-    fill_in "Message", with: "Hello, world!"
+    fill_in "Message", with: "This is my first post"
     click_button "Submit"
-    expect(page).to have_content("Hello, world!")
+    expect(page).to have_content(Time.new.strftime("%B %-d at %l:%M%p"))
   end
 end

@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
   "https://github.com/#{repo_name}.git"
 end
+gem 'bootstrap-sass', '3.3.7'
 
 gem 'clearance'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -35,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13'
+  gem 'factory_girl_rails'
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.5'
 end
@@ -47,3 +49,8 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+
+group :production do
+ gem 'pg'
+end
+#Test comment
