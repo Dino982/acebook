@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   end
 
   delete '/posts/:post_id/likes' => 'likes#destroy'
+  get '/' => 'posts#index'
 
   # resources :users do
   #   resources :likes
