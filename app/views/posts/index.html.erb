@@ -1,31 +1,33 @@
 
 <% @posts.each do |post| %>
 
-<p><%= simple_format post.message %></p>
-<p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
+  <div id="<%= post.id %>" class="post">
 
-<h3>Comments</h3>
+  <p><%= simple_format post.message %></p>
+  <p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
 
-<% post.comments.each do |comment| %>
-<p>
-  <strong>Commenter:</strong>
-  <%= simple_format comment.body %>
-</p>
-<% end %>
+  <h3>Comments</h3>
 
-<%= form_for([post, post.comments.build]) do |f| %>
-<p>
-  <!-- <%= f.label :commenter %><br> -->
-  <% f.text_field :commenter %>
-</p>
-<%= f.label :body %><br>
-<%= f.text_area :body %>
-</p>
-<p>
-  <%= f.submit %>
-</p>
-<% end %>
-<% end %>
+  <% post.comments.each do |comment| %>
+  <p>
+    <strong>Commenter:</strong>
+    <%= simple_format comment.body %>
+  </p>
+  <% end %>
+
+  <%= form_for([post, post.comments.build]) do |f| %>
+  <p>
+    <% f.text_field :commenter %>
+  </p>
+  <%= f.label :body %><br>
+  <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %>
+  <% end %>
+  </div>
 
 <%= link_to new_post_path do %>
 New post

@@ -5,6 +5,7 @@
 
 body {
   padding-top: 60px;
+  text-align: center;
 }
 
 section {
@@ -48,4 +49,13 @@ h2 {
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+.new_post {
+  margin-top: 30vh;
+}
+
+.post {
+  border: 1px solid dimgrey;
+  margin: 30px;
 }
