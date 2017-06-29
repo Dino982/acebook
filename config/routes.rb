@@ -11,10 +11,12 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    resources :likes
   end
 
-  resources :likes do
-    resources :users
-    resources :posts
-  end
+  delete '/posts/:post_id/likes' => 'likes#destroy'
+
+  # resources :users do
+  #   resources :likes
+  # end
 end
