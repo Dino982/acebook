@@ -7,6 +7,7 @@ module Features
     end
 
     def sign_in
+      visit('/posts')
       password = "password"
       user = FactoryGirl.create(:user, password: password)
       sign_in_with user.email, password
@@ -20,7 +21,7 @@ module Features
     end
 
     def sign_out
-      click_button I18n.t("layouts.application.sign_out")
+      click_link I18n.t("layouts.application.sign_out")
     end
 
     def sign_up_with(email, password)
@@ -31,8 +32,9 @@ module Features
     end
 
     def expect_user_to_be_signed_in
-      visit root_path
-      expect(page).to have_button I18n.t("layouts.application.sign_out")
+      # visit root_path
+      visit('/posts')
+      expect(page).to have_link I18n.t("layouts.application.sign_out")
     end
 
     def expect_user_to_be_signed_out
