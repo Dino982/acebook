@@ -1,7 +1,7 @@
 
 <% @posts.each do |post| %>
 
-  <div id="<%= post.id %>" class="post">
+  <div id="<%= post.id %>" class="post" style="background-color:CornflowerBlue;color:white;padding:20px;">
 
   <p><%= simple_format post.message %></p>
   <p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
