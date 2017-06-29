@@ -13,8 +13,7 @@ Rails.application.routes.draw do
     resources :comments
     resources :likes
   end
-
-  delete '/posts/:post_id/likes' => 'likes#destroy'
+  
   get '/' => 'posts#index'
 
   # resources :users do
