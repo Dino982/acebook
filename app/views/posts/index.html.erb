@@ -1,34 +1,76 @@
 
+<!doctype html>
+<html>
+<%= stylesheet_link_tag "stylesheet.css" %>
+<head>
+  <title>Acebook | It's ace!</title>
+</head>
+<body>
+<div class="tools">
+  <%= link_to new_post_path do %>
+      New post
+  <% end %>
+
+  <% if signed_in? %>
+      <p>Hello, <%= current_user.firstname %>!!!</p>
+      <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
+  <% end %>
+</div>
+
 <% @posts.each do |post| %>
 
-  <div id="<%= post.id %>" class="post" style="background-color:CornflowerBlue;color:white;padding:20px;">
+<div class="post" id="<%= post.id %>">
+<p><%= User.find(post.user_id).firstname %> says: <%= simple_format post.message %></p>
+<p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
 
-  <p><%= simple_format post.message %></p>
-  <p><%= (post.created_at + Time.new.utc_offset).strftime("%B %-d at %l:%M%p") %></p>
+<h3>Comments</h3>
+<% post.comments.each do |comment| %>
+<p>
+  <p><%= User.find(comment.user_id).firstname %> says: <%= comment.body %></p>
 
-  <h3>Comments</h3>
+</p>
+<% end %>
 
-  <% post.comments.each do |comment| %>
-  <p>
-    <strong>Commenter:</strong>
-    <%= simple_format comment.body %>
-  </p>
+<%= form_for([post, post.comments.build]) do |f| %>
+<p>
+  <%= f.hidden_field(:user_id, :value => current_user.id) %>
+</p>
+<%= f.text_area :body %>
+<p>
+  <%= f.submit "Comment"%>
+</p>
+<% end %>
+
+<% @like = Like.where(post_id: post.id, user_id: current_user.id).first %>
+<% if @like %>
+    <p>You have already liked this!</p>
+    <p>Likes: <%= Like.where(post_id: post.id).count %></p>
+<% else %>
+  <%= form_for([post, post.likes.build]) do |f| %>
+    <p>
+      <%= f.hidden_field(:user_id, :value => current_user.id) %>
+      <%= f.submit 'Like' %>
+      <br>
+      <p>Likes: <%= Like.where(post_id: post.id).count %></p>
+    </p>
   <% end %>
+<% end %>
 
-  <%= form_for([post, post.comments.build]) do |f| %>
-  <p>
-    <% f.text_field :commenter %>
-  </p>
-  <!-- <%= f.label :body %><br> -->
-  <%= f.text_area :body %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
-  <% end %>
-  <% end %>
-  </div>
+</div>
 
+<% end %>
+
+<div class="tools">
 <%= link_to new_post_path do %>
 New post
 <% end %>
+
+<% if signed_in? %>
+  <p>Hello, <%= current_user.firstname %>!!!</p>
+  <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
+<% end %>
+</div>
+
+</body>
+
+</html>

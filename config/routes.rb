@@ -4,14 +4,14 @@ Rails.application.routes.draw do
   get "/pages/:page" => "pages#show"
 
   constraints Clearance::Constraints::SignedIn.new do
-    resources :posts do
-      resources :comments
-    end
+    resources :posts 
   end
 
-  constraints Clearance::Constraints::SignedOut.new do
-    get '/posts', to: redirect('/sign_in')
+  resources :posts do
+    resources :comments
+    resources :likes
   end
-
-
+  
+  get '/' => 'posts#index'
+  
 end
