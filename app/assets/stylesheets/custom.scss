@@ -7,8 +7,8 @@
 body {
   padding-top: 60px;
   text-align: center;
-  font-family: "Arial";
-  background-color:lightgrey;
+  font-family: Comic Sans MS;
+  background-color:LightBlue;
 }
 
 section {
@@ -29,11 +29,21 @@ textarea {
 
 /* typography */
 
-h1, h2, h3, h4, h5, h6 {
+// h1, h2, h3, h4, h6 {
+//   line-height: 1;
+//   background-color: Green;
+// }
+
+h4, h6 {
   line-height: 1;
   background-color: Pink;
-
 }
+
+// h5 {
+//   line-height: 1;
+//   letter-spacing: -2px;
+//   background-color: White;
+// }
 
 h1 {
   font-size: 3em;
@@ -63,5 +73,12 @@ p {
 .post {
   border: 1px solid dimgrey;
   margin: 30px;
-  background-color:CornflowerBlue;
+  background-color:Cornsilk;
+}
+
+.about {
+  padding-top: 80px;
+  text-align: center;
+  font-family: Comic Sans MS;
+  background-color:LightBlue;
 }
