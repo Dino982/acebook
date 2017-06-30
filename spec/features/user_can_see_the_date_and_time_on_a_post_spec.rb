@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-RSpec.feature "Timeline", type: :feature do
-  scenario "Can see the date and time a post was submitted" do
+RSpec.feature "Posts have a date and time", type: :feature do
+  scenario "Users can see the date and time a post was submitted" do
     visit "/posts"
     click_link "Sign up"
     fill_in "Email", with:"test@example.org"

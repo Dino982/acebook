@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Timeline", type: :feature do
+RSpec.feature "Users can comment on posts", type: :feature do
   scenario "Can add comments to posts and view them" do
     visit "/posts"
     click_link "Sign up"
@@ -10,8 +10,8 @@ RSpec.feature "Timeline", type: :feature do
     click_link "New post"
     fill_in "Message", with: "Test post"
     click_button "Submit"
-    fill_in "Body", with: "Amazing post!!!"
-    click_button "Create Comment"
+    fill_in "comment_body", with: "Amazing post!!!"
+    click_button "Comment"
     expect(page).to have_content("Amazing post!!!")
   end
 end
