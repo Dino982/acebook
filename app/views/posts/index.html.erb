@@ -6,17 +6,6 @@
   <title>Acebook | It's ace!</title>
 </head>
 <body>
-<div class="tools">
-  <%= link_to new_post_path do %>
-      New post
-  <% end %>
-
-  <% if signed_in? %>
-      <p>Hello, <%= current_user.firstname %>!!!</p>
-      <p><%= link_to 'Sign out...', sign_out_path, method: :delete %></p>
-  <% end %>
-</div>
-
 <% @posts.each do |post| %>
 
 <div class="post" id="<%= post.id %>">
@@ -35,7 +24,9 @@
 <p>
   <%= f.hidden_field(:user_id, :value => current_user.id) %>
 </p>
+<p>
 <%= f.text_area :body %>
+</p>
 <p>
   <%= f.submit "Comment"%>
 </p>

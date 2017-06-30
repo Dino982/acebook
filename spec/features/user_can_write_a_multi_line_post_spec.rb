@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.feature "Timeline", type: :feature do
+RSpec.feature "Posts are formatted", type: :feature do
   scenario "Can submit posts accross multi lines" do
     visit "/posts"
     click_link "Sign up"
