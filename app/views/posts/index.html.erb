@@ -6,6 +6,17 @@
   <title>Acebook | It's ace!</title>
 </head>
 <body>
+
+<div class="tools">
+  <%= link_to new_post_path do %>
+      New post
+  <% end %>
+
+  <% if signed_in? %>
+      <p>Hello, <%= current_user.firstname %>!!!</p>
+  <% end %>
+</div>
+
 <% @posts.each do |post| %>
 
 <div class="post" id="<%= post.id %>">
